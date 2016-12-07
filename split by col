@@ -7,7 +7,7 @@ Dim myarr As Variant
 Dim title As String
 Dim titlerow As Integer
 
-'' vcol is the key, the number the the key col, you may change it.
+' vcol is the key, the number the the key col, you may change it.
 vcol = 7
 
 ' change "Combined" with your sheet name, which is need to be split
