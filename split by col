@@ -1,4 +1,12 @@
 Sub parse_data()  
 Dim lr As Long
 Dim ws As Worksheet
+Dim vcol, i As Integer
+Dim icol As Long
+Dim myarr As Variant
+Dim title As String
+Dim titlerow As Integer
+
+#vcol is the key, the number the the key col, you may change it.
+vcol = 7
 
