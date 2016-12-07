@@ -33,6 +33,7 @@ ws.Range(title).AutoFilter field:=vcol, Criteria1:=myarr(i) & ""
 If Not Evaluate("=ISREF('" & myarr(i) & "'!A1)") Then
 Sheets.Add(after:=Worksheets(Worksheets.Count)).Name = myarr(i) & ""
 Else
+
 Sheets(myarr(i) & "").Move after:=Worksheets(Worksheets.Count)
 End If
 ws.Range("A" & titlerow & ":A" & lr).EntireRow.Copy Sheets(myarr(i) & "").Range("A1")
