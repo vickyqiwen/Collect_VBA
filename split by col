@@ -25,7 +25,8 @@ On Error Resume Next
 If ws.Cells(i, vcol) <> "" And Application.WorksheetFunction.Match(ws.Cells(i, vcol), ws.Columns(icol), 0) = 0 Then
 ws.Cells(ws.Rows.Count, icol).End(xlUp).Offset(1) = ws.Cells(i, vcol)
 End If
-Nextmyarr = Application.WorksheetFunction.Transpose(ws.Columns(icol).SpecialCells(xlCellTypeConstants))
+Next
+myarr = Application.WorksheetFunction.Transpose(ws.Columns(icol).SpecialCells(xlCellTypeConstants))
 ws.Columns(icol).Clear
 For i = 2 To UBound(myarr)
 ws.Range(title).AutoFilter field:=vcol, Criteria1:=myarr(i) & ""
