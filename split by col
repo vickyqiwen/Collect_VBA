@@ -10,3 +10,31 @@ Dim titlerow As Integer
 #vcol is the key, the number the the key col, you may change it.
 vcol = 7
 
+#change "Combined" with your sheet name, which is need to be split
+Set ws = Sheets("Combined")
+
+lr = ws.Cells(ws.Rows.Count, vcol).End(xlUp).Row
+
+# Z is the 26th col, you may replace it with the end col letter of your "Combined" sheet. Tip: "26" have to larger than your vcol eg,7 .
+title = "A1:Z1"
+titlerow = ws.Range(title).Cells(1).Row
+icol = ws.Columns.Count
+ws.Cells(1, icol) = "Unique"
+For i = 2 To lr
+On Error Resume Next
+If ws.Cells(i, vcol) <> "" And Application.WorksheetFunction.Match(ws.Cells(i, vcol), ws.Columns(icol), 0) = 0 Thenws.Cells(ws.Rows.Count, icol).End(xlUp).Offset(1) = ws.Cells(i, vcol)
+End If
+Nextmyarr = Application.WorksheetFunction.Transpose(ws.Columns(icol).SpecialCells(xlCellTypeConstants))
+ws.Columns(icol).Clear
+For i = 2 To UBound(myarr)
+ws.Range(title).AutoFilter field:=vcol, Criteria1:=myarr(i) & ""
+If Not Evaluate("=ISREF('" & myarr(i) & "'!A1)") Then
+Sheets.Add(after:=Worksheets(Worksheets.Count)).Name = myarr(i) & ""
+ElseSheets(myarr(i) & "").Move after:=Worksheets(Worksheets.Count)
+End If
+ws.Range("A" & titlerow & ":A" & lr).EntireRow.Copy Sheets(myarr(i) & "").Range("A1")
+Sheets(myarr(i) & "").Columns.AutoFit
+Next
+ws.AutoFilterMode = False
+ws.Activate
+End Sub
