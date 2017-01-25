@@ -1,0 +1,18 @@
+
+The step to change and refresh the date fromat.
+ 
+Select Colomn.
+Change format from General to DATE (short date).
+Data ribbon and click Text to Columns.
+Choose Delimited and click Next.
+Uncheck all the delimiters and click Next.
+Click Finish.
+The number formatting of all the cells will update.
+You may filter it now.
+
+-------------------------
+ Example:
+ Short date                            06/05/2012
+ Medium date                        5-Jun-12
+ Long date 	                 Tuesday, June 5, 2012 
+
