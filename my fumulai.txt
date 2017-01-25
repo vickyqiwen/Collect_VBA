@@ -1,0 +1,10 @@
+convert First name and Last name
+=MID(A2&" "&A2,FIND(" ",A2)+1,LEN(A2))
+
+combine two column with space
+=B2&" "&C2
+
+=IF(G2=411214,"I don’t know")
+
+=IF(D:D =110100,"Commercial Banking")
+ 
